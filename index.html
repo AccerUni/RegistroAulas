@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organização das Aulas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            margin: 0;
+            padding: 0;
+            color: #2C3E50;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container-fluid {
+            flex: 1;
+        }
+        /* Animação de fundo */
+        @keyframes fundoAnimado {
+            0% { background-position: 0 0; }
+            50% { background-position: 50px 50px; }
+            100% { background-position: 0 0; }
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('imagens/fundo-medicina.png');
+            background-size: 250px;
+            opacity: 0.15;
+            z-index: -1;
+            animation: fundoAnimado 10s infinite linear alternate;
+        }
+        /* Navbar */
+        .navbar {
+            background: #1565C0;
+        }
+        .navbar a {
+            color: white !important;
+        }
+        /* Botões das matérias */
+        .btn-materia {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #E3F2FD;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: #2C3E50;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+        .btn-materia:hover {
+            transform: scale(1.08);
+            box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .btn-materia img {
+            width: 90px;
+            height: 90px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+        .admin-button {
+            position: fixed;
+            bottom: 5px;
+            left: 5px;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        /* Rodapé */
+        footer {
+            background: #1565C0;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Organização das Aulas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container-fluid text-center py-5">
+        <h1 class="mb-4">Minhas Futuras Matérias</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col"><a href="materias/anatomia.html?materia=anatomia" class="btn-materia"><img src="imagens/anatomia.avif" alt="Anatomia">Anatomia</a></div>
+            <div class="col"><a href="materias/bioquimica.html?materia=bioquimica" class="btn-materia"><img src="imagens/bioquimica.png" alt="Bioquímica">Bioquímica</a></div>
+            <div class="col"><a href="materias/fisiologia.html?materia=fisiologia" class="btn-materia"><img src="imagens/fisiologia.jpg" alt="Fisiologia">Fisiologia</a></div>
+            <div class="col"><a href="materias/cinesiologia.html?materia=cinesiologia" class="btn-materia"><img src="imagens/cinesiologia.png" alt="Cinesiologia">Cinesiologia</a></div>
+            <div class="col"><a href="materias/bases.html?materia=bases" class="btn-materia"><img src="imagens/materia5.jpg" alt="Bases">Bases</a></div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Organização das Aulas</p>
+    </footer>
+    <a href="https://pablofelipe13.github.io/PlanilhaAutentica-o/" class="admin-button"></a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Organização das Aulas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("HM5uqRD1788myT5em"); // Substitua pelo seu Public Key do EmailJS
+        })();
+
+        function enviarEmail(event) {
+            event.preventDefault(); // Evita recarregar a página
+
+            emailjs.sendForm("service_o4jq9cl", "template_6ntij7j", "#meuFormulario")
+                .then(function(response) {
+                    alert("Mensagem enviada com sucesso!");
+                    document.getElementById("meuFormulario").reset();
+                }, function(error) {
+                    alert("Erro ao enviar mensagem. Tente novamente.");
+                });
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+            color: #2C3E50;
+            padding-top: 170px; /* Ajustado para evitar sobreposição com a navbar */
+        }
+        .navbar {
+            background: #1565C0 !important;
+        }
+        .navbar-nav, .nav-link, .nav-item {
+            color: black;
+        }
+        a {
+            color: black;
+        }
+        .navbar-brand{
+            color: black;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .form-control, .btn {
+            border-radius: 8px;
+        }
+        .btn-primary {
+            background: #1565C0;
+            border: none;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            background: #0D47A1;
+        }
+        footer {
+            background: #1565C0;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Organização das Aulas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-5"> 
+        <h1 class="text-center mb-4">Entre em Contato</h1>
+        <p class="text-center">Se você tiver sugestões, dúvidas ou reclamações, preencha o formulário abaixo.</p>
+        
+        <form id="meuFormulario" onsubmit="enviarEmail(event)">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="mensage" class="form-label">Mensagem</label>
+                <textarea class="form-control" id="mensage" name="mensage" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        </form>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Organização das Aulas</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
