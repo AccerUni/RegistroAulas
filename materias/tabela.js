@@ -61,4 +61,5 @@ async function carregarAulas() {
 }
 
 // 🔄 Garante que os dados carreguem ao abrir a página
-window.addEventListener("load", carregarAulas);
+document.addEventListener("DOMContentLoaded", carregarAulas);
+
