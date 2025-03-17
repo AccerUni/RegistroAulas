@@ -22,8 +22,17 @@ async function carregarAulas() {
         const querySnapshot = await getDocs(collection(db, materia));
         tabelaCorpo.innerHTML = ""; // Limpa a tabela antes de preencher
 
+        let aulas = [];
+
         querySnapshot.forEach((doc) => {
-            const { dataAula, conteudo, nomeArquivo, linkArquivo, nomeGravacao, linkGravacao } = doc.data();
+            aulas.push(doc.data());
+        });
+
+        // Ordena as aulas pela data da mais recente para a mais antiga
+        aulas.sort((a, b) => new Date(b.dataAula) - new Date(a.dataAula));
+
+        // Adiciona as aulas ordenadas na tabela
+        aulas.forEach(({ dataAula, conteudo, nomeArquivo, linkArquivo, nomeGravacao, linkGravacao }) => {
             const linha = `
                 <tr>
                     <td>${dataAula}</td>
