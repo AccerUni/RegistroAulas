@@ -25,17 +25,27 @@ async function carregarAulas() {
         let aulas = [];
 
         querySnapshot.forEach((doc) => {
-            aulas.push(doc.data());
+            let dados = doc.data();
+
+            // ✅ Converte a string "dd-mm-yyyy" para um objeto Date
+            if (dados.dataAula) {
+                const [dia, mes, ano] = dados.dataAula.split("-").map(Number);
+                dados.dataAula = new Date(ano, mes - 1, dia); // Mês no JavaScript começa do 0
+            }
+
+            aulas.push(dados);
         });
 
-        // Ordena as aulas pela data da mais recente para a mais antiga
-        aulas.sort((a, b) => new Date(b.dataAula) - new Date(a.dataAula));
+        // ✅ Ordena as aulas pela data da mais recente para a mais antiga
+        aulas.sort((a, b) => b.dataAula - a.dataAula);
 
-        // Adiciona as aulas ordenadas na tabela
+        // ✅ Adiciona as aulas ordenadas na tabela
         aulas.forEach(({ dataAula, conteudo, nomeArquivo, linkArquivo, nomeGravacao, linkGravacao }) => {
+            const dataFormatada = dataAula ? dataAula.toLocaleDateString("pt-BR") : "Data inválida";
+
             const linha = `
                 <tr>
-                    <td>${dataAula}</td>
+                    <td>${dataFormatada}</td>
                     <td>${conteudo}</td>
                     <td>${nomeArquivo ? nomeArquivo : "Sem arquivo"}</td>
                     <td>${linkArquivo ? `<a href="${linkArquivo}" target="_blank">📄 Abrir Arquivo</a>` : "Sem Link"}</td>
